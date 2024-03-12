@@ -1,0 +1,91 @@
+
+class User {
+    static count: number = 0;
+    private name: string;
+    private login: string;
+    private password: string;
+    private grade: number;
+
+    constructor(name1: string, login1: string, password1: string, grade1: number) {
+        this.name = name1;
+        this.login = login1;
+        this.password = password1;
+        this.grade = grade1;
+     
+    }
+
+    get name1(): string {
+        return this.name;
+    }
+
+    set name1(newName: string) {
+        this.name = newName;
+    }
+
+    get login1(): string {
+        return this.login;
+    }
+
+    get password1(): string {
+        return "*******";
+    }
+
+    set password1(newPassword: string) {
+        this.password = newPassword;
+    }
+
+    get grade1(): string {
+        return "Неизвестное свойство grade";
+    }
+
+    set grade1(value: number) {
+        console.log("Неизвестное свойство grade");
+    }
+
+    show_info(): void {
+        console.log(`имя: ${this.name}, логин: ${this.login}` );
+    }
+
+    eq(user: User): boolean {
+        return this.grade == user.grade;
+    }
+
+    lt(user: User): boolean {
+        return this.grade < user.grade;
+    }
+
+    gt(user: User): boolean {
+        return this.grade > user.grade;
+    }
+
+    
+}
+
+class SuperUser extends User {
+    static count: number = 0;
+    private role: string;
+
+    constructor(name: string, login: string, password: string, role1: string) {
+        super(name, login, password, 0);
+        this.role = role1;
+      
+    }
+
+    get role1(): string {
+        return this.role;
+    }
+
+    set role1(newRole: string) {
+        this.role = newRole;
+    }
+
+    show_info(): void {
+        console.log(`имя: ${this.name1}, логин: ${this.login1}, пароль: ${this.password1}, роль по жизни: ${this.role}`);
+    }
+}
+
+const user_just = new User("katya", "katya123", "password", 10);
+const user_super = new SuperUser("вася", "вася456", "password", "admin");
+
+user_just.show_info();
+user_super.show_info();
